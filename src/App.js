@@ -1,11 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 
-function App() {
+//views
+import Home from './views/Home';
+import Cart from './views/Cart';
+
+const App = () => {
   return (
+    <Router>
     <div className="app">
-    <h1>App</h1>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/cart" component={Cart}/>
+      </Switch>
+    
     </div>
+    </Router>
   );
 }
 
