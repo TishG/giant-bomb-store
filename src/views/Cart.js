@@ -43,7 +43,7 @@ const Cart = ({ cart, clear }) => {
             <button className="btn btn-primary" onClick={handleClick}>
               Checkout
             </button>
-            <button className="btn btn-danger mt-2" onClick={clear()}>Clear Cart</button>
+            <button className="btn btn-danger mt-2" onClick={() => clear()}>Clear Cart</button>
             <small>Warning: Clearing the cart is permanent</small>
           </div>
         </div>
