@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { API_KEY } from "../API";
+import React from "react";
 import "./Home.css";
 
 //components
@@ -9,8 +7,6 @@ import Games from "../components/Games";
 import Search from "../components/Search";
 import Pagination from "../components/Pagination";
 
-//replace API_KEY with your API Key
-let API = API_KEY;
 
 const Home = ({
   cart,

@@ -16,9 +16,9 @@ const Pagination = ({ gamesPerPage, totalGames, paginate }) => {
             className="page-item"
             onClick={() => paginate(number)}
           >
-            <a class="page-link" href="#">
+            <button className="page-link">
               {number}
-            </a>
+            </button>
           </li>
         ))}
       </ul>

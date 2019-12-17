@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { API_KEY } from "./API";
+import { API_KEY } from "./API/API";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 //views
 import Home from "./views/Home";
 import Cart from "./views/Cart";
+
+require("dotenv").config();
 
 //replace API_KEY with your API Key
 let API = API_KEY;
@@ -17,28 +19,26 @@ const App = () => {
   const [unfilteredGames, setUnfilteredGames] = useState([]);
   const [cart, setCart] = useState([]);
   const [error, setError] = useState(null);
-  const [offset, setOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [gamesPerPage] = useState(10);
 
   useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `https://www.giantbomb.com/api/games/?api_key=${API}&field_list=name,deck,original_release_date,image&format=json&offset=0`
+        );
+        setGames(response.data.results);
+        setUnfilteredGames(response.data.results);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        console.error(err);
+      }
+    };
     fetchGames();
   }, []);
-
-  const fetchGames = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(
-        `https://www.giantbomb.com/api/games/?api_key=${API}&field_list=name,deck,original_release_date,image&format=json&offset=${offset}`
-      );
-      setGames(response.data.results);
-      setUnfilteredGames(response.data.results);
-      setLoading(false);
-    } catch (err) {
-      setError(err.message);
-      console.error(err);
-    }
-  };
 
   const filterGames = value => {
     if (value.trim() === "") {
@@ -71,9 +71,7 @@ const App = () => {
 
   //Change page method
   const paginate = pageNumber => setCurrentPage(pageNumber);
-  // gamesPerPage={gamesPerPage}
-  // totalGames={games.length}
-  // paginate={paginate}
+
   return (
     <Router>
       <div className="app">
@@ -87,7 +85,6 @@ const App = () => {
                 games={games}
                 cart={cart}
                 error={error}
-                offset={offset}
                 currentPage={currentPage}
                 add={addToCart}
                 filter={filterGames}
