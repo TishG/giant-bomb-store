@@ -1,12 +1,13 @@
 .game {
   width: 300px;
-  min-height: 500px;
+  min-height: 350px;
   border-radius: 4px;
   object-fit: cover;
+  box-sizing: border-box;
 }
 
 .game-card-top {
-  width: 100px;
+  width: 125px;
 }
 
 .game-card-top img {
