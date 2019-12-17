@@ -1,0 +1,19 @@
+.game {
+  width: 300px;
+  min-height: 500px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.game-card-top {
+  width: 100px;
+}
+
+.game-card-top img {
+  width: inherit;
+  object-fit: contain;
+}
+
+.game-card-top button {
+  width: inherit;
+}

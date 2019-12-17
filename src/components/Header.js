@@ -6,12 +6,12 @@ const Header = () => {
     <div className="header">
       <header className="pt-1 px-3 d-flex align-items-center justify-content-between">
         <h1 className="app-title">
-          Giant Bomb <i class="fas fa-bomb"></i> Store
+          Giant Bomb <i className="fas fa-bomb"></i> Store
         </h1>
-        <div className="my-cart" aria-role="button">
-          <span class="fas fa-shopping-cart"></span>
+        <button className="my-cart">
+          <i className="fas fa-shopping-cart"></i>
           <span className="ml-1">0</span>
-        </div>
+        </button>
       </header>
     </div>
   );
