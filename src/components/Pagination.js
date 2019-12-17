@@ -2,27 +2,28 @@ import React from "react";
 //styles
 import "./Pagination.css";
 
-function Pagination({ postsPerPage, totalGames, paginate }) {
+const Pagination = ({ gamesPerPage, totalGames, paginate }) => {
   let pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalGames / postsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalGames / gamesPerPage); i++) {
     pageNumbers = [...pageNumbers, i];
   }
   return (
-<nav className="pagination" aria-label="Page navigation">
-<ul className="pagination">
+    <nav className="pagination" aria-label="Page navigation">
+      <ul className="pagination">
         {pageNumbers.map(number => (
           <li
             key={number}
             className="page-item"
             onClick={() => paginate(number)}
-            role="button"
           >
-            {number}
+            <a class="page-link" href="#">
+              {number}
+            </a>
           </li>
         ))}
       </ul>
-</nav>
+    </nav>
   );
-}
+};
 
 export default Pagination;

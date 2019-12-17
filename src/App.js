@@ -19,7 +19,7 @@ const App = () => {
   const [error, setError] = useState(null);
   const [offset, setOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [gamesPerPage] = useState(10);
 
   useEffect(() => {
     fetchGames();
@@ -63,6 +63,17 @@ const App = () => {
   const clearCart = () => {
     return setCart([]);
   };
+
+  //Get current posts
+  const indexOfLastGame = currentPage * gamesPerPage; //5
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage; //0
+  const currentGames = games.slice(indexOfFirstGame, indexOfLastGame);
+
+  //Change page method
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  // gamesPerPage={gamesPerPage}
+  // totalGames={games.length}
+  // paginate={paginate}
   return (
     <Router>
       <div className="app">
@@ -78,13 +89,19 @@ const App = () => {
                 error={error}
                 offset={offset}
                 currentPage={currentPage}
-                postsPerPage={postsPerPage}
                 add={addToCart}
                 filter={filterGames}
+                currentGames={currentGames}
+                paginate={paginate}
+                gamesPerPage={gamesPerPage}
               />
             )}
           />
-          <Route exact path="/cart" render={props => <Cart cart={cart} clear={clearCart}/>} />
+          <Route
+            exact
+            path="/cart"
+            render={props => <Cart cart={cart} clear={clearCart} />}
+          />
         </Switch>
       </div>
     </Router>

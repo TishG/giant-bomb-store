@@ -4,8 +4,7 @@ import "./Games.css";
 //components
 import Game from "./Game";
 
-const Games = ({ loading, games, add }) => {
-  console.log("GAMES", games);
+const Games = ({ loading, currentGames, add }) => {
   if (loading) {
     return (
       <div className="loading bg-dark text-white d-flex justify-content-center align-items-center">
@@ -16,7 +15,7 @@ const Games = ({ loading, games, add }) => {
   return (
     <div className="games container">
       <ul>
-        {games.map(game => (
+        {currentGames.map(game => (
           <Game
             add={add}
             key={game.name}

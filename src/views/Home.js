@@ -7,16 +7,31 @@ import "./Home.css";
 import Header from "../components/Header";
 import Games from "../components/Games";
 import Search from "../components/Search";
+import Pagination from "../components/Pagination";
 
 //replace API_KEY with your API Key
 let API = API_KEY;
 
-const Home = ({cart, filter, games, loading, add}) => {
+const Home = ({
+  cart,
+  filter,
+  loading,
+  add,
+  currentGames,
+  games,
+  gamesPerPage,
+  paginate
+}) => {
   return (
     <div className="home">
-      <Header cartNumber={cart.length}/>
+      <Header cartNumber={cart.length} />
       <Search filter={filter} />
-      <Games games={games} loading={loading} add={add}/>
+      <Pagination
+        gamesPerPage={gamesPerPage}
+        totalGames={games.length}
+        paginate={paginate}
+      />
+      <Games currentGames={currentGames} loading={loading} add={add} />
     </div>
   );
 };
