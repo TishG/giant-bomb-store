@@ -1,0 +1,17 @@
+.search {
+  max-width: 700px;
+  width: 90%;
+  margin: 1em auto;
+  height: 40px;
+}
+
+.search input {
+  width: inherit;
+  height: inherit;
+  padding-left: 1.75em;
+}
+
+.search .fa-search {
+  position: absolute;
+  margin-left: 0.5em;
+}
