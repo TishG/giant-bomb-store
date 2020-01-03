@@ -17,6 +17,6 @@ Technologies used: React, React-Router-Dom, Giant Bomb API
 2. cd giant-bomb-store
 3. npm install
 4. In App.js, 
-    1. comment out line 3 (// import { API_KEY } from "./API/API")
+    1. comment out line 4 (// import { API_KEY } from "./API/API")
     2. Replace API_KEY on line 12 with your api key
 5. npm start
