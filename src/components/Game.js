@@ -11,8 +11,8 @@ const Game = ({ name, image, description, releaseDate, add }) => {
       </div>
       <div className="game-card-top d-flex flex-column">
         <img src={image} className="card-img-top" alt={name} />
-        <button onClick={(e) => add(name)}>
-          <i className="fas fa-cart-plus text-primary"></i>
+        <button className="btn btn-primary" onClick={(e) => add(name)}>
+          <i className="fas fa-cart-plus"></i>
         </button>
       </div>
      </div> 
