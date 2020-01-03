@@ -8,10 +8,8 @@ import "./App.css";
 import Home from "./views/Home";
 import Cart from "./views/Cart";
 
-require("dotenv").config();
-
-//replace API_KEY with your API Key
-let API = API_KEY;
+//replace "your API goes here" with your API Key
+let API = API_KEY || "your API goes here";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -27,7 +25,7 @@ const App = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `https://www.giantbomb.com/api/games/?api_key=${API}&field_list=name,deck,original_release_date,image&format=json&offset=0`
+          `/api/games/?api_key=${API}&field_list=name,deck,original_release_date,image&format=json&offset=0`
         );
         setGames(response.data.results);
         setUnfilteredGames(response.data.results);
