@@ -8,8 +8,8 @@ import "./App.css";
 import Home from "./views/Home";
 import Cart from "./views/Cart";
 
-//replace "your API goes here" with your API Key
-let API = API_KEY || "your API goes here";
+//replace API_KEY with your API Key
+let API = API_KEY;
 
 const App = () => {
   const [loading, setLoading] = useState(false);
